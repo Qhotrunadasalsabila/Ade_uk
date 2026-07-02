@@ -19,7 +19,9 @@ font-family:"Segoe UI",sans-serif;
 
 body{
 height:100vh;
-overflow:hidden;
+overflow-x:hidden;
+overflow-y:auto;
+
 
 background:
 radial-gradient(circle at top,#2563eb,#020617 75%);
@@ -27,7 +29,15 @@ radial-gradient(circle at top,#2563eb,#020617 75%);
 color:white;
 }
 
-
+.screen{
+min-height:100vh;
+height:auto;
+}
+@media (max-width: 480px){
+.star, .shoot{
+display:none;
+}
+}
 
 /* cinematic light */
 
@@ -192,44 +202,44 @@ display:none;
 }
 
 
-
-
 .card{
-
 width:90%;
-
 max-width:650px;
-
 padding:40px;
-
 text-align:center;
 
-
-background:
-rgba(255,255,255,.12);
-
-
+background:rgba(255,255,255,.12);
 backdrop-filter:blur(20px);
-
-
 border-radius:30px;
+border:1px solid #ffffff33;
+box-shadow:0 0 40px #38bdf8;
 
+max-height:85vh;
+overflow-y:auto;
 
-border:
-1px solid #ffffff33;
-
-
-box-shadow:
-0 0 40px #38bdf8;
-
-
-animation:
-cinema .8s ease;
-
+/* smooth scrolling */
+scrollbar-width: thin;
+scrollbar-color: #38bdf8 rgba(255,255,255,.1);
+}
+/* scrollbar style */
+.card::-webkit-scrollbar{
+width:6px;
 }
 
+.card::-webkit-scrollbar-track{
+background:rgba(255,255,255,.08);
+border-radius:10px;
+}
 
+.card::-webkit-scrollbar-thumb{
+background:#38bdf8;
+border-radius:10px;
+box-shadow:0 0 10px #38bdf8;
+}
 
+.card::-webkit-scrollbar-thumb:hover{
+background:#7dd3fc;
+}
 @keyframes cinema{
 
 
@@ -455,15 +465,12 @@ opacity:0;
 
 }
 
-
-
 #letter{
-
 display:none;
-
+overflow-y:auto;
+padding:20px;
+-webkit-overflow-scrolling:touch;
 }
-
-
 
 #letter.show{
 
@@ -471,7 +478,10 @@ display:flex;
 
 }
 
-
+#letterText{
+white-space:pre-line;
+text-align:left;
+}
 
 .cake{
 
@@ -593,6 +603,72 @@ padding:25px;
 }
 
 }
+/* ===== RESPONSIVE FIX (TANPA MERUBAH DESAIN) ===== */
+
+@media (max-width: 768px){
+
+h1{
+font-size:34px;
+}
+
+#count{
+font-size:90px;
+}
+
+#gift{
+font-size:70px;
+}
+
+.card{
+padding:25px;
+max-height:80vh;
+}
+
+.time{
+font-size:16px;
+}
+
+.date{
+font-size:18px;
+letter-spacing:2px;
+}
+
+.location{
+font-size:12px;
+}
+
+p{
+font-size:15px;
+line-height:1.6;
+}
+}
+
+@media (max-width: 480px){
+
+h1{
+font-size:28px;
+}
+
+#count{
+font-size:70px;
+}
+
+#gift{
+font-size:60px;
+}
+
+.card{
+padding:18px;
+border-radius:20px;
+}
+
+.cursor{
+width:150px;
+height:150px;
+filter:blur(90px);
+}
+
+}
 
 
 </style>
@@ -635,7 +711,7 @@ Happy Sweet 16 Boy ✨
 
 
 <div class="location">
-📍 Made with love
+📍 Made with love from caca
 </div>
 
 
@@ -667,7 +743,7 @@ Klik hadiah untuk membuka
 
 
 <h1>
-💌 Untuk Boy
+💌 for ukasyah
 </h1>
 
 
@@ -933,19 +1009,25 @@ musicFade();
 
 
 /* letter */
-
-
 let text =
 
-"Selamat ulang tahun yang ke-16, Boy ✨\n\n"+
-"Semoga kamu selalu sehat, bahagia, dan sukses.\n\n"+
-"Terus percaya pada diri sendiri, terus berkembang, "+
-"dan jangan berhenti mengejar mimpi.\n\n"+
-"Semoga tahun ini menjadi tahun penuh pengalaman hebat.\n\n"+
-"Happy Sweet 16 Boy 🎉";
+"I don't  say \"Happy Birthday.\" but Today, I lift all my prayers to the sky for you.\n\n"+
 
+"Semoga semua yang kamu impikan, cita-citakan, dan perjuangkan perlahan menjadi kenyataan.\n\n"+
 
+"Semoga segala hal yang pernah membuatmu runtuh justru menjadi alasanmu untuk tumbuh menjadi pribadi yang lebih kuat.\n\n"+
 
+"Semoga ALLAH selalu menjagamu di mana pun kamu berada, hari-harimu dipenuhi cinta yang tak pernah ada batasnya, kebahagiaan yang tulus, kesehatan yang selalu menyertaimu, serta umur yang panjang agar kamu bisa menikmati setiap keindahan hidup.\n\n"+
+
+"Live well. I will always pray for you from here, and I will always support every choice you make as long as it brings goodness to your life.\n\n"+
+
+"I hope my prayers hug you whenever my arms can't.\n\n"+
+
+"And lastly, thank you so much. I'm truly grateful and happy to know you.\n\n"+
+
+"Selamat bertambah usia. Semoga semua doa baik hari ini menjadi awal dari banyak kebahagiaan yang akan selalu menemukanmu. 🤍\n\n"+
+
+"Happy Sweet 16 Ukasyah 🎉";
 let b=0;
 
 
@@ -996,13 +1078,6 @@ run();
 }
 
 
-
-
-
-
-
-
-
 /* music fade */
 
 function musicFade(){
@@ -1046,10 +1121,6 @@ clearInterval(fade);
 
 
 
-
-
-
-
 /* candle */
 
 
@@ -1069,11 +1140,6 @@ confetti();
 
 
 }
-
-
-
-
-
 
 
 
@@ -1132,11 +1198,6 @@ f.remove();
 
 
 
-
-
-
-
-
 /* confetti */
 
 
@@ -1181,11 +1242,6 @@ c.remove();
 
 
 }
-
-
-
-
-
 
 
 
